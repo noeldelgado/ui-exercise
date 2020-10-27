@@ -8,13 +8,31 @@ import {
   ListItemText,
   Typography,
 } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  listAvatar: {
+    minWidth: theme.spacing(5.5),
+  },
+  avatar: {
+    width: theme.spacing(4),
+    height: theme.spacing(4),
+  },
+}));
 
 export default function NavUserInfo({ model }) {
+  const classes = useStyles();
+
   return (
-    <List>
+    <List dense disablePadding>
       <ListItem>
-        <ListItemAvatar>
-          <Avatar variant="rounded" alt={model?.name} src={model?.avatar} />
+        <ListItemAvatar className={classes.listAvatar}>
+          <Avatar
+            variant="rounded"
+            alt={model?.name}
+            src={model?.avatar}
+            className={classes.avatar}
+          />
         </ListItemAvatar>
         <ListItemText
           primary={

@@ -19,3 +19,20 @@ export function getNavFilterIcon(filter) {
       return <InboxOutlined fontSize="small" />;
   }
 }
+
+export function getNavFilterUnreadCounter(filter, emails) {
+  switch (filter) {
+    case NAV_FILTER_ITEMS.INBOX:
+      return emails
+        .filter((e) => e.read === false)
+        .filter((e) => e.deleted === false).length;
+    case NAV_FILTER_ITEMS.STARRED:
+      return emails
+        .filter((e) => e.read === false)
+        .filter((e) => e.starred === true).length;
+    case NAV_FILTER_ITEMS.BIN:
+      return emails
+        .filter((e) => e.read === false)
+        .filter((e) => e.deleted === true).length;
+  }
+}
