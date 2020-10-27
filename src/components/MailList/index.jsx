@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Box, List, ListItem, ListItemText } from '@material-ui/core';
+import {
+  Box,
+  Chip,
+  Divider,
+  List,
+  ListItem,
+  ListItemText,
+  ListSubheader,
+} from '@material-ui/core';
 
+import MailListHeader from './MailListHeader';
 import { getFilteredEmails } from './utils';
 import useStore from '../../store';
 
@@ -19,8 +28,9 @@ export default function MailList() {
 
   return (
     <Box>
-      {filter}
-      <List>
+      <MailListHeader />
+      <Divider />
+      <List subheader={<ListSubheader>{filter}</ListSubheader>}>
         {filteredItems.map((email) => (
           <ListItem
             key={email.id}
@@ -30,6 +40,15 @@ export default function MailList() {
             divider
           >
             <ListItemText primary={email.sender} secondary={email.subject} />
+            {email.date}
+            {email.tags.map((tag, index) => (
+              <Chip
+                key={`${tag}-${index}`}
+                label={tag}
+                size="small"
+                variant="outlined"
+              />
+            ))}
           </ListItem>
         ))}
       </List>
