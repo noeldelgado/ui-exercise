@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { func } from 'prop-types';
 import {
   Box,
   Button,
@@ -18,8 +19,19 @@ import {
 
 import { EMAIL_CHECK_OPTIONS } from '/src/utils/constants';
 
-export default function MailListHeader() {
+export default function MailListHeader({ onCheckEmailOptionClick }) {
   const [menuAnchorEl, setMenuAnchorEl] = useState(null);
+
+  const handleCheckboxClick = (ev) => {
+    ev.stopPropagation();
+    const option = EMAIL_CHECK_OPTIONS[ev.target.checked ? 'ALL' : 'NONE'];
+    onCheckEmailOptionClick(option);
+  };
+
+  const handleMenuItemCLick = (option) => {
+    onCheckEmailOptionClick(option);
+    setMenuAnchorEl(null);
+  };
 
   return (
     <Box display="flex" alignItems="center" bgcolor="background.paper">
@@ -30,7 +42,7 @@ export default function MailListHeader() {
           aria-haspopup="true"
           onClick={(ev) => setMenuAnchorEl(ev.currentTarget)}
         >
-          <Checkbox size="small" onClick={(ev) => ev.stopPropagation()} />
+          <Checkbox size="small" onClick={handleCheckboxClick} />
           <ArrowDropDownRounded />
         </Button>
       </Tooltip>
@@ -45,7 +57,9 @@ export default function MailListHeader() {
         keepMounted
       >
         {Object.keys(EMAIL_CHECK_OPTIONS).map((key) => (
-          <MenuItem key={key}>{key}</MenuItem>
+          <MenuItem key={key} onClick={() => handleMenuItemCLick(key)}>
+            {key}
+          </MenuItem>
         ))}
       </Menu>
       <Divider orientation="vertical" flexItem />
@@ -69,3 +83,7 @@ export default function MailListHeader() {
     </Box>
   );
 }
+
+MailListHeader.propTypes = {
+  onCheckEmailOptionClick: func.isRequired,
+};

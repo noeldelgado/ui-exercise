@@ -1,4 +1,4 @@
-import { NAV_FILTER_ITEMS } from '../../utils/constants';
+import { NAV_FILTER_ITEMS, EMAIL_CHECK_OPTIONS } from '../../utils/constants';
 
 export function getFilteredEmails(filter, emails) {
   if (filter.startsWith('LABEL:')) {
@@ -17,5 +17,26 @@ export function getFilteredEmails(filter, emails) {
       return emails.filter((email) => email.deleted === true);
     default:
       throw new Error(`Unknown filter: ${filter}`);
+  }
+}
+
+export function getCheckedEmails(option, emails) {
+  switch (option) {
+    case EMAIL_CHECK_OPTIONS.ALL:
+      return emails.map((e) => e.id);
+    case EMAIL_CHECK_OPTIONS.NONE:
+      return [];
+    case EMAIL_CHECK_OPTIONS.READ:
+      return emails.filter((e) => e.read).map((e) => e.id);
+    case EMAIL_CHECK_OPTIONS.UNREAD:
+      return emails.filter((e) => (e.read ?? false) === false).map((e) => e.id);
+    case EMAIL_CHECK_OPTIONS.STARRED:
+      return emails.filter((e) => e.starred).map((e) => e.id);
+    case EMAIL_CHECK_OPTIONS.UNSTARRED:
+      return emails
+        .filter((e) => (e.starred ?? false) === false)
+        .map((e) => e.id);
+    default:
+      throw new Error(`Unknown select option ${option}`);
   }
 }
