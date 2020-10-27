@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '@material-ui/core';
+import { Box, Hidden } from '@material-ui/core';
 
 import NavUserInfo from './NavUserInfo';
 import NavListItems from './NavListItems';
@@ -22,7 +22,9 @@ export default function Nav() {
       <Box px={2}>
         <img src={logo} alt="logo" />
       </Box>
-      <NavUserInfo model={globalStore.user} />
+      <Hidden xsDown>
+        <NavUserInfo model={globalStore.user} />
+      </Hidden>
       <NavListItems />
       <NavListTags />
     </Box>

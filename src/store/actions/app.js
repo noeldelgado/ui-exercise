@@ -43,3 +43,11 @@ export function setVisibilityFilter(store, filter) {
 export function setBanner(store, open = false, message = '') {
   store.setState({ banner: open, bannerMessage: message });
 }
+
+/**
+ * For mobile only (max-width: 600px)
+ * @param {bool} [open=false] if `true`, `Drawer -> Nav` is open
+ */
+export function setMobileNavOpen(store, open = false) {
+  store.setState({ mobileNavOpen: open });
+}

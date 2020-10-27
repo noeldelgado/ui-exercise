@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { Box, Fade } from '@material-ui/core';
+import { Box, Drawer, Fade, Hidden } from '@material-ui/core';
 
 import LoadingScreen from './components/LoadingScreen';
+import Header from './components/Header';
 import Nav from './components/Nav';
 import MailList from './components/MailList';
 import MailDetail from './components/MailDetail';
@@ -25,14 +26,34 @@ export default function App() {
       } finally {
         setTimeout(() => {
           globalActions.app.setLoading(false);
-        }, 2000);
+        }, 0);
       }
     })();
   }, []);
 
+  useEffect(() => {
+    globalActions.app.setMobileNavOpen(false);
+  }, [globalStore.filter]);
+
   return (
     <>
-      <Nav />
+      <Hidden xsDown>
+        <Nav />
+      </Hidden>
+
+      <Hidden smUp>
+        <Header />
+        <Drawer
+          anchor="left"
+          variant="temporary"
+          open={globalStore.mobileNavOpen}
+          onClose={() => globalActions.app.setMobileNavOpen(false)}
+          ModalProps={{ keepMounted: true }}
+        >
+          <Nav />
+        </Drawer>
+      </Hidden>
+
       <Box component="main">
         <Box
           className="mainInner"

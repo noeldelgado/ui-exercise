@@ -13,6 +13,8 @@ const initialState = {
   filter: NAV_FILTER_ITEMS.INBOX,
   activeEmailId: null,
 
+  mobileNavOpen: false,
+
   banner: null,
   bannerMessage: null,
 };
