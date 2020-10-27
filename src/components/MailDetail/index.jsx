@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography } from '@material-ui/core';
+import { Box, Chip, Typography } from '@material-ui/core';
 import useStore from '../../store';
 
 export default function MailDetail() {
@@ -14,6 +14,14 @@ export default function MailDetail() {
   return (
     <Box>
       <Typography>{email.subject}</Typography>
+      {email.tags.map((tag, index) => (
+        <Chip
+          key={`${tag}-${index}`}
+          label={tag}
+          size="small"
+          variant="outlined"
+        />
+      ))}
     </Box>
   );
 }

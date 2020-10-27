@@ -5,6 +5,7 @@ import LoadingScreen from './components/LoadingScreen';
 import Nav from './components/Nav';
 import MailList from './components/MailList';
 import MailDetail from './components/MailDetail';
+import Api from './api';
 import useStore from './store';
 
 export default function App() {
@@ -13,13 +14,11 @@ export default function App() {
   useEffect(() => {
     (async function fetchAppData() {
       try {
-        const emails = await (await fetch(`/assets/data/emails.json`)).json();
-        const user = await (await fetch(`/assets/data/user.json`)).json();
-        const newEmails = emails.messages.map((email) => ({
-          ...{ deleted: Math.random() > 0.5, starred: Math.random() > 0.5 },
-          ...email,
-        }));
-        globalActions.setInitialFetchedData({ user, emails: newEmails });
+        const [user, emails] = await Promise.all([
+          Api.getUser(),
+          Api.getUserEmails(),
+        ]);
+        globalActions.setInitialFetchedData({ user, emails });
       } catch (err) {
         console.error(err);
       } finally {
