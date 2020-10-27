@@ -1,7 +1,7 @@
 module.exports = {
   mount: {
     public: '/',
-    src: '/_dist_',
+    src: '/src',
   },
   plugins: ['@snowpack/plugin-react-refresh', '@snowpack/plugin-dotenv'],
   install: [
