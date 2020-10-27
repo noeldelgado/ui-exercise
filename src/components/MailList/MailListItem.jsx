@@ -58,7 +58,14 @@ export default function MailListItem({ model, onChange, selected = false }) {
       divider
     >
       {/* CONTROLS */}
-      <Box ml={-1}>
+      <ListItemIcon
+        style={{
+          minWidth: 32,
+          flexDirection: 'column',
+          marginLeft: -12,
+          marginTop: -2,
+        }}
+      >
         <Tooltip title="Select">
           <Checkbox
             size="small"
@@ -75,67 +82,68 @@ export default function MailListItem({ model, onChange, selected = false }) {
             onClick={handleStarButtonClick}
           />
         </Box>
-      </Box>
+      </ListItemIcon>
 
       {/* TEXT */}
-      <Box flexGrow={1}>
-        {/* TEXT:{sender, date, readFeedback} */}
-        <Box display="flex" justifyContent="space-between">
-          <Box display="inline-flex" alignItems="center">
-            <Avatar className={classes.avatar} alt={model.sender} />
-            <Typography
-              variant="body2"
-              color={model.read ? 'textSecondary' : 'inherit'}
-              noWrap
-            >
-              {model.sender}
-            </Typography>
-          </Box>
-          <Box>
-            <Typography variant="caption" color="textSecondary">
-              {formatDate(model.date)}
-              <Box ml={1} component="span">
-                <Badge
-                  color="secondary"
-                  variant="dot"
-                  badgeContent={Number(!model.read)}
-                />
-              </Box>
-            </Typography>
-          </Box>
-        </Box>
-        {/* TEXT:{subject, } */}
-        <Typography
-          variant="body2"
-          color={model.read ? 'textSecondary' : 'textPrimary'}
-          noWrap
-        >
-          <Box component="span" fontWeight={model.read ? 400 : 500}>
-            {model.subject}
-          </Box>
-        </Typography>
-        {/* TEXT:{bodyPreview} */}
-        <Typography variant="caption" color="textSecondary">
-          {getTextContent(model.body).substring(0, 100)}
-        </Typography>
-        {/* TEXT:tags */}
-        <Box>
-          {Boolean(model.tags?.length) && (
-            <>
-              {model.tags.map((tag, i) => (
-                <Box key={i} component="span" mr={0.5}>
-                  <Chip
-                    label={tag}
-                    component="span"
-                    size="small"
-                    variant="outlined"
+      <ListItemText
+        id={labelId}
+        primary={
+          <Box display="flex" justifyContent="space-between">
+            <Box display="inline-flex" alignItems="center">
+              <Avatar className={classes.avatar} alt={model.sender} />
+              <Typography
+                variant="body2"
+                color={model.read ? 'textSecondary' : 'inherit'}
+                noWrap
+              >
+                {model.sender}
+              </Typography>
+            </Box>
+            <Box>
+              <Typography variant="caption" color="textSecondary">
+                {formatDate(model.date)}
+                <Box ml={1} component="span">
+                  <Badge
+                    color="secondary"
+                    variant="dot"
+                    badgeContent={Number(!model.read)}
                   />
                 </Box>
-              ))}
-            </>
-          )}
-        </Box>
-      </Box>
+              </Typography>
+            </Box>
+          </Box>
+        }
+        secondary={
+          <>
+            <Typography
+              variant="body2"
+              color={model.read ? 'textSecondary' : 'textPrimary'}
+              noWrap
+            >
+              <Box component="span" fontWeight={model.read ? 400 : 500}>
+                {model.subject}
+              </Box>
+            </Typography>
+            {getTextContent(model.body).substring(0, 100)}
+            <Box component="span" display="flex" pt={1}>
+              {Boolean(model.tags?.length) && (
+                <>
+                  {model.tags.map((tag, i) => (
+                    <Box key={i} component="span" mr={0.5}>
+                      <Chip
+                        label={tag}
+                        component="span"
+                        size="small"
+                        variant="outlined"
+                      />
+                    </Box>
+                  ))}
+                </>
+              )}
+            </Box>
+          </>
+        }
+      />
     </ListItem>
   );
 }
