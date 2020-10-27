@@ -3,6 +3,7 @@ import { Box, Fade } from '@material-ui/core';
 
 import LoadingScreen from './components/LoadingScreen';
 import Nav from './components/Nav';
+import MailList from './components/MailList';
 import useStore from './store';
 
 export default function App() {
@@ -33,6 +34,8 @@ export default function App() {
         {globalStore.emails.length} messages
         <br />
         {JSON.stringify(globalStore.user)}
+        <br />
+        <MailList collection={globalStore.emails} />
       </Box>
       <Fade
         unmountOnExit
