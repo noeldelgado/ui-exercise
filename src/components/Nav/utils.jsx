@@ -26,7 +26,7 @@ export function getNavFilterIcon(filter) {
   }
 }
 
-export function getNavFilterUnreadCounter(filter, emails) {
+export function getNavFilterUnreadCounter(filter, emails, user) {
   switch (filter) {
     case NAV_FILTER_ITEMS.INBOX:
       return emails
@@ -40,5 +40,11 @@ export function getNavFilterUnreadCounter(filter, emails) {
       return emails
         .filter((e) => e.read === false)
         .filter((e) => e.deleted === true).length;
+    case NAV_FILTER_ITEMS.SENT:
+      return emails
+        .filter((e) => e.read === false)
+        .filter((e) => e.sender === user.email).length;
+    case NAV_FILTER_ITEMS.ALL:
+      return emails.filter((e) => e.read === false).length;
   }
 }

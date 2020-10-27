@@ -48,7 +48,11 @@ export default function NavListItems() {
           <ListItemText primary={capitalize(key)} />
           <Box mr={1}>
             <Badge
-              badgeContent={getNavFilterUnreadCounter(key, globalStore.emails)}
+              badgeContent={getNavFilterUnreadCounter(
+                key,
+                globalStore.emails,
+                globalStore.user,
+              )}
             />
           </Box>
         </ListItem>
