@@ -22,7 +22,7 @@ export default function NavListItems() {
         <ListItem
           key={key}
           component="li"
-          onClick={() => globalActions.setVisibilityFilter(key)}
+          onClick={() => globalActions.app.setVisibilityFilter(key)}
           button
           dense
         >

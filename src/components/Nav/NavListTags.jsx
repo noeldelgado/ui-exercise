@@ -21,7 +21,7 @@ export default function NavListTags() {
           <ListItem
             key={label}
             component="li"
-            onClick={() => globalActions.setVisibilityFilter(label)}
+            onClick={() => globalActions.app.setVisibilityFilter(label)}
             button
             dense
           >

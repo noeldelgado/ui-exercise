@@ -16,28 +16,28 @@ import useStore from '../../store';
 export default function MailList() {
   const [{ filter, emails }, globalActions] = useStore();
   const [filteredItems, setFilteredItems] = useState([]);
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItemsIds, setSelectedItemsIds] = useState([]);
 
   useEffect(() => {
     setFilteredItems(getFilteredEmails(filter, emails));
   }, [emails]);
 
   useEffect(() => {
-    setSelectedItems([]);
+    setSelectedItemsIds([]);
     setFilteredItems(getFilteredEmails(filter, emails));
-    globalActions.setActiveEmailId(null);
+    globalActions.app.setActiveEmailId(null);
   }, [filter]);
 
   const handleCheckEmailOptionClick = (option) => {
-    const selectedItems = getCheckedEmails(option, filteredItems);
-    setSelectedItems(selectedItems);
+    const selectedItemsIds = getCheckedEmails(option, filteredItems);
+    setSelectedItemsIds(selectedItemsIds);
   };
 
   return (
     <Box>
       <MailListHeader
         filteredItems={filteredItems}
-        selectedItems={selectedItems}
+        selectedItemsIds={selectedItemsIds}
         onCheckEmailOptionClick={handleCheckEmailOptionClick}
       />
       <Divider />
@@ -45,22 +45,31 @@ export default function MailList() {
         {filteredItems.map((email) => (
           <ListItem
             key={email.id}
-            onClick={() => globalActions.setActiveEmailId(email.id)}
+            onClick={() => globalActions.app.setActiveEmailId(email.id)}
             component="li"
-            selected={selectedItems.includes(email.id)}
+            selected={selectedItemsIds.includes(email.id)}
             button
             divider
           >
             <ListItemText primary={email.sender} secondary={email.subject} />
-            {email.date}
-            {email.tags.map((tag, index) => (
-              <Chip
-                key={`${tag}-${index}`}
-                label={tag}
-                size="small"
-                variant="outlined"
-              />
-            ))}
+            <Box>
+              {email.date}
+              <br />
+              read: {String(email.read)}
+              <br />
+              starred: {String(email.starred)}
+              <br />
+              deleted: {String(email.deleted)}
+              <br />
+              {email.tags.map((tag, index) => (
+                <Chip
+                  key={`${tag}-${index}`}
+                  label={tag}
+                  size="small"
+                  variant="outlined"
+                />
+              ))}
+            </Box>
           </ListItem>
         ))}
       </List>

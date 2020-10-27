@@ -18,12 +18,12 @@ export default function App() {
           Api.getUser(),
           Api.getUserEmails(),
         ]);
-        globalActions.setInitialFetchedData({ user, emails });
+        globalActions.app.setInitialFetchedData({ user, emails });
       } catch (err) {
         console.error(err);
       } finally {
         setTimeout(() => {
-          globalActions.setLoading(false);
+          globalActions.app.setLoading(false);
         }, 2000);
       }
     })();

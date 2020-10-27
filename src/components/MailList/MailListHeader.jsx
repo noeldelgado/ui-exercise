@@ -18,18 +18,20 @@ import {
 } from '@material-ui/icons';
 
 import { EMAIL_CHECK_OPTIONS } from '/src/utils/constants';
+import useStore from '../../store';
 
 export default function MailListHeader({
   onCheckEmailOptionClick,
   filteredItems,
-  selectedItems,
+  selectedItemsIds,
 }) {
+  const [, globalActions] = useStore();
   const [menuAnchorEl, setMenuAnchorEl] = useState(null);
   const [checked, setChecked] = useState(false);
   const [indeterminated, setIndeterminated] = useState(false);
 
   useEffect(() => {
-    const selectedLen = selectedItems.length;
+    const selectedLen = selectedItemsIds.length;
     const filteredLen = filteredItems.length;
 
     if (selectedLen === 0 && filteredLen === 0) {
@@ -43,7 +45,7 @@ export default function MailListHeader({
       setChecked(value);
       setIndeterminated(value);
     }
-  }, [selectedItems, filteredItems]);
+  }, [selectedItemsIds, filteredItems]);
 
   const handleCheckboxClick = (ev) => {
     ev.stopPropagation();
@@ -103,7 +105,11 @@ export default function MailListHeader({
           </IconButton>
         </Tooltip>
         <Tooltip title="Add star">
-          <IconButton>
+          <IconButton
+            onClick={() =>
+              globalActions.emails.setStarred(selectedItemsIds, true)
+            }
+          >
             <StarBorderRounded fontSize="small" />
           </IconButton>
         </Tooltip>
@@ -115,5 +121,5 @@ export default function MailListHeader({
 MailListHeader.propTypes = {
   onCheckEmailOptionClick: func.isRequired,
   filteredItems: array.isRequired,
-  selectedItems: array.isRequired,
+  selectedItemsIds: array.isRequired,
 };
