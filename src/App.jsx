@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Box, Fab, Drawer, Fade, Hidden } from '@material-ui/core';
+import { Box, Fab, Divider, Drawer, Fade, Hidden } from '@material-ui/core';
 import { CreateRounded } from '@material-ui/icons';
 
 import LoadingScreen, { ANIMATION_TIMEOUT } from './components/LoadingScreen';
@@ -82,6 +82,7 @@ export default function App() {
           data-active-email-id={globalStore.activeEmailId}
         >
           <MailList />
+          <Divider orientation="vertical" />
           <MailDetail />
         </Box>
       </Box>
