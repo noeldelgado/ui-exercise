@@ -2,6 +2,8 @@ import React from 'react';
 import {
   DeleteOutlined,
   InboxOutlined,
+  MailOutlined,
+  SendOutlined,
   StarBorderRounded,
 } from '@material-ui/icons';
 
@@ -15,6 +17,10 @@ export function getNavFilterIcon(filter) {
       return <StarBorderRounded fontSize="small" />;
     case NAV_FILTER_ITEMS.BIN:
       return <DeleteOutlined fontSize="small" />;
+    case NAV_FILTER_ITEMS.SENT:
+      return <SendOutlined fontSize="small" />;
+    case NAV_FILTER_ITEMS.ALL:
+      return <MailOutlined fontSize="small" />;
     default:
       return <InboxOutlined fontSize="small" />;
   }

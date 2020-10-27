@@ -1,0 +1,44 @@
+{
+  "messages": [
+    {
+      "id": "101",
+      "subject": "Sent message #1",
+      "sender": "me@gmail.com",
+      "recipient": "recipient+1@gmail.com",
+      "body": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lacinia vestibulum eros, a aliquet odio fermentum et. Fusce in volutpat est, eu aliquam ante. Integer at sapien sit amet nisl venenatis ullamcorper eu sed magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque a odio vitae risus dictum pellentesque in vehicula leo. Nam massa sem, pretium at lacus quis, aliquam facilisis odio. Maecenas risus purus, dapibus sed viverra a, efficitur eget leo. Integer quis magna id ante ornare euismod. Nunc aliquet arcu sit amet tincidunt feugiat. Ut et sapien ut leo blandit egestas a non arcu.</p><p><a href='https://pixelia.me/' target='_blank'>Link test</a></p><p>Sed finibus rhoncus nulla, eu molestie urna volutpat non. Etiam molestie faucibus nisi eget molestie. Vestibulum porta a leo a scelerisque. Mauris eget nisl sapien. Aliquam consectetur sed massa eget accumsan. Pellentesque eget arcu quam. Vivamus feugiat lacinia laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed quis quam vitae lorem rhoncus viverra vel et dolor. Sed pharetra cursus risus sit amet accumsan.</p>",
+      "tags": ["travel", "work", "music"],
+      "date": "2020-10-24T03:25:43.511Z",
+      "attachments": [
+      {
+        "type": "image",
+        "path": "/assets/mockdata/attachments/image-01.jpg"
+      },
+      {
+        "type": "image",
+        "path": "/assets/mockdata/attachments/image-02.jpg"
+      }
+    ]
+
+    },
+    {
+      "id": "102",
+      "subject": "Sent message #2",
+      "sender": "me@gmail.com",
+      "recipient": "recipient+2@gmail.com",
+      "body": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lacinia vestibulum eros, a aliquet odio fermentum et. Fusce in volutpat est, eu aliquam ante. Integer at sapien sit amet nisl venenatis ullamcorper eu sed magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque a odio vitae risus dictum pellentesque in vehicula leo. Nam massa sem, pretium at lacus quis, aliquam facilisis odio. Maecenas risus purus, dapibus sed viverra a, efficitur eget leo. Integer quis magna id ante ornare euismod. Nunc aliquet arcu sit amet tincidunt feugiat. Ut et sapien ut leo blandit egestas a non arcu.</p><p><a href='https://pixelia.me/' target='_blank'>Link test</a></p><p>Sed finibus rhoncus nulla, eu molestie urna volutpat non. Etiam molestie faucibus nisi eget molestie. Vestibulum porta a leo a scelerisque. Mauris eget nisl sapien. Aliquam consectetur sed massa eget accumsan. Pellentesque eget arcu quam. Vivamus feugiat lacinia laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed quis quam vitae lorem rhoncus viverra vel et dolor. Sed pharetra cursus risus sit amet accumsan.</p>",
+      "tags": ["another-tag"],
+      "date": "2020-10-24T10:25:43.511Z",
+      "read": true,
+      "attachments": [
+        {
+          "type": "image",
+          "path": "/assets/mockdata/attachments/image-03.jpg"
+        },
+        {
+          "type": "pdf",
+          "path": "/assets/mockdata/attachments/sample.pdf"
+        }
+      ]
+    }
+  ]
+}

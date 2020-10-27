@@ -18,11 +18,15 @@ export default function App() {
   useEffect(() => {
     (async function fetchAppData() {
       try {
-        const [user, emails] = await Promise.all([
+        const [user, sentEmails, emails] = await Promise.all([
           Api.getUser(),
+          Api.getSentEmails(),
           Api.getUserEmails(),
         ]);
-        globalActions.app.setInitialFetchedData({ user, emails });
+        globalActions.app.setInitialFetchedData({
+          user,
+          emails: [...sentEmails, ...emails],
+        });
       } catch (err) {
         console.error(err);
       } finally {

@@ -4,8 +4,11 @@ import { Box, Typography } from '@material-ui/core';
 
 import AvatarCustom from '/src/components/AvatarCustom';
 import { formatDate } from '/src/utils';
+import useStore from '/src/store';
 
 export default function MailDetailSenderInfo({ model, userInfo }) {
+  const [globalStore] = useStore();
+
   return (
     <Box pt={2} px={3}>
       <Box display="flex" justifyContent="space-between" flexWrap="wrap">
@@ -35,7 +38,9 @@ export default function MailDetailSenderInfo({ model, userInfo }) {
               </Box>
             </Typography>
             <Typography variant="body2" color="textSecondary">
-              to me
+              {model.sender !== globalStore.user.email
+                ? 'to me'
+                : model?.recipient ?? 'unknown recipient'}
             </Typography>
           </Box>
         </Box>

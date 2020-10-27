@@ -1,6 +1,6 @@
 import { NAV_FILTER_ITEMS, EMAIL_CHECK_OPTIONS } from '../../utils/constants';
 
-export function getFilteredEmails(filter, emails) {
+export function getFilteredEmails(filter, emails, user) {
   if (filter.startsWith('LABEL:')) {
     const label = filter.split(':').pop();
     return emails.filter(
@@ -10,11 +10,17 @@ export function getFilteredEmails(filter, emails) {
 
   switch (filter) {
     case NAV_FILTER_ITEMS.INBOX:
-      return emails.filter((email) => email.deleted === false);
+      return emails.filter(
+        (email) => email.sender !== user.email && email.deleted === false,
+      );
     case NAV_FILTER_ITEMS.STARRED:
       return emails.filter((email) => email.starred === true);
     case NAV_FILTER_ITEMS.BIN:
       return emails.filter((email) => email.deleted === true);
+    case NAV_FILTER_ITEMS.SENT:
+      return emails.filter((email) => email.sender === user.email);
+    case NAV_FILTER_ITEMS.ALL:
+      return emails;
     default:
       throw new Error(`Unknown filter: ${filter}`);
   }

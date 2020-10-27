@@ -21,7 +21,8 @@ import {
 } from '@material-ui/icons';
 
 import { EMAIL_CHECK_OPTIONS, NAV_FILTER_ITEMS } from '/src/utils/constants';
-import useStore from '../../store';
+import { capitalize } from '/src/utils';
+import useStore from '/src/store';
 
 export default function MailListHeader({
   onCheckEmailOptionClick,
@@ -98,7 +99,7 @@ export default function MailListHeader({
       >
         {Object.keys(EMAIL_CHECK_OPTIONS).map((key) => (
           <MenuItem key={key} onClick={() => handleMenuItemCLick(key)}>
-            {key}
+            {capitalize(key)}
           </MenuItem>
         ))}
       </Menu>

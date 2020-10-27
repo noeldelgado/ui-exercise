@@ -16,18 +16,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MailList() {
-  const [{ filter, emails }, globalActions] = useStore();
+  const [{ filter, emails, user }, globalActions] = useStore();
   const [filteredItems, setFilteredItems] = useState([]);
   const [selectedItemsIds, setSelectedItemsIds] = useState([]);
   const classes = useStyles();
 
   useEffect(() => {
-    setFilteredItems(getFilteredEmails(filter, emails));
+    setFilteredItems(getFilteredEmails(filter, emails, user));
   }, [emails]);
 
   useEffect(() => {
     setSelectedItemsIds([]);
-    setFilteredItems(getFilteredEmails(filter, emails));
+    setFilteredItems(getFilteredEmails(filter, emails, user));
     globalActions.app.setActiveEmailId(null);
   }, [filter]);
 

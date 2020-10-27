@@ -29,4 +29,17 @@ export default {
       throw new Error(err);
     }
   },
+  async getSentEmails() {
+    try {
+      const data = await fetch(`/assets/data/sent.json`);
+      const { messages } = await data.json();
+
+      return messages.map((email) => ({
+        ...extendedEmailDefaults,
+        ...email,
+      }));
+    } catch (err) {
+      throw new Error(err);
+    }
+  },
 };
