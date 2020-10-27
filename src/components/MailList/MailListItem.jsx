@@ -15,7 +15,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 
 import ToggleButtonStar from '/src/components/ToggleButtonStar';
-import { formatDate } from '/src/utils';
+import { formatDate, getTextContent } from '/src/utils';
 import useStore from '/src/store';
 
 const useStyles = makeStyles((theme) => ({
@@ -116,7 +116,7 @@ export default function MailListItem({ model, onChange, selected = false }) {
         </Typography>
         {/* TEXT:{bodyPreview} */}
         <Typography variant="caption" color="textSecondary">
-          {model.body.substring(0, 100)}
+          {getTextContent(model.body).substring(0, 100)}
         </Typography>
         {/* TEXT:tags */}
         <Box>

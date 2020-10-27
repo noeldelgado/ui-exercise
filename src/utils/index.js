@@ -14,3 +14,15 @@ export function formatDate(dateString = '', dataOptions = {}) {
     ...dataOptions,
   });
 }
+
+/**
+ * Convert an HTML string to plain text
+ * @param {String} [htmlString=''] string that contains the HTML that will be converted to plain text
+ * @return {String} plain text value
+ */
+export function getTextContent(htmlString = '') {
+  const element = document.createElement('div');
+  element.insertAdjacentHTML('beforeend', htmlString);
+
+  return element.innerText;
+}
