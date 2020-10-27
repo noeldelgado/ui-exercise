@@ -1,4 +1,4 @@
-import demoUserEmailsData from '../utils/mockdata/emails.js';
+import demoUserEmailsData from '/src/utils/mockdata/emails.js';
 
 const extendedEmailDefaults = {
   read: false,

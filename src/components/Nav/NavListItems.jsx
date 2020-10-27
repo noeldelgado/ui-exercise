@@ -13,7 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { getNavFilterIcon, getNavFilterUnreadCounter } from './utils';
 import { capitalize } from '/src/utils';
 import { NAV_FILTER_ITEMS } from '/src/utils/constants';
-import useStore from '../../store';
+import useStore from '/src/store';
 
 const useStyles = makeStyles((theme) => ({
   listItemIcon: {

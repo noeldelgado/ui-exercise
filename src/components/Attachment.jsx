@@ -7,7 +7,7 @@ import {
   PictureAsPdfRounded,
 } from '@material-ui/icons';
 
-import { ATTACHMENTS_TYPES } from '../utils/constants';
+import { ATTACHMENTS_TYPES } from '/src/utils/constants';
 
 const getFileName = (path) => {
   return path.split('/').pop();

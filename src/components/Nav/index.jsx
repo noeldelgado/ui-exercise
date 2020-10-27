@@ -5,7 +5,7 @@ import { AddRounded } from '@material-ui/icons';
 import NavUserInfo from './NavUserInfo';
 import NavListItems from './NavListItems';
 import NavListTags from './NavListTags';
-import useStore from '../../store';
+import useStore from '/src/store';
 import logo from '../../logo.png';
 
 export default function Nav() {

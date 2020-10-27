@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import MailListHeader from './MailListHeader';
 import MailListItem from './MailListItem';
 import { getFilteredEmails, getCheckedEmails } from './utils';
-import useStore from '../../store';
+import useStore from '/src/store';
 
 const useStyles = makeStyles((theme) => ({
   list: {

@@ -7,7 +7,7 @@ import {
   StarBorderRounded,
 } from '@material-ui/icons';
 
-import { NAV_FILTER_ITEMS } from '../../utils/constants';
+import { NAV_FILTER_ITEMS } from '/src/utils/constants';
 
 export function getNavFilterIcon(filter) {
   switch (filter) {

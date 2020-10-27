@@ -1,7 +1,7 @@
 import React from 'react';
 import { Snackbar } from '@material-ui/core';
 
-import useStore from '../store';
+import useStore from '/src/store';
 
 export default function Banner() {
   const [globalStore, globalActions] = useStore();
