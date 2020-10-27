@@ -1,3 +1,6 @@
+import tagColors from '/src/utils/mockdata/tag-colors';
+import usersInfo from '/src/utils/mockdata/users';
+
 /**
  * Convert and format a date string to local
  * @param {String} [dateString='']
@@ -29,4 +32,12 @@ export function getTextContent(htmlString = '') {
 
 export function capitalize(str = '') {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
+
+export function getTagColor(tagText) {
+  return tagColors[tagText] ?? tagColors.default;
+}
+
+export function getUserInfo(email) {
+  return usersInfo[email];
 }

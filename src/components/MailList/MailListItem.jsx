@@ -15,7 +15,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AvatarCustom from '/src/components/AvatarCustom';
 import ChipCustom from '/src/components/ChipCustom';
 import ToggleButtonStar from '/src/components/ToggleButtonStar';
-import { formatDate, getTextContent } from '/src/utils';
+import { formatDate, getTextContent, getUserInfo } from '/src/utils';
 import useStore from '/src/store';
 
 const useStyles = makeStyles((theme) => ({
@@ -32,6 +32,7 @@ export default function MailListItem({ model, onChange, selected = false }) {
   const classes = useStyles();
 
   const labelId = `checkbox-list-secondary-label-${model.id}`;
+  const userInfo = getUserInfo(model.sender);
 
   const handleItemClick = () => {
     globalActions.emails.setRead([model.id], true);
@@ -90,13 +91,19 @@ export default function MailListItem({ model, onChange, selected = false }) {
         primary={
           <Box display="flex" justifyContent="space-between">
             <Box display="inline-flex" alignItems="center">
-              <AvatarCustom className={classes.avatar} alt={model.sender} />
+              <AvatarCustom
+                className={classes.avatar}
+                alt={userInfo?.name ?? model.sender}
+                src={userInfo?.avatar}
+              />
               <Typography
                 variant="body2"
                 color={model.read ? 'textSecondary' : 'inherit'}
                 noWrap
               >
-                {model.sender}
+                <Box component="span" fontWeight={model.read ? 400 : 600}>
+                  {userInfo?.name ?? model.sender}
+                </Box>
               </Typography>
             </Box>
             <Box>

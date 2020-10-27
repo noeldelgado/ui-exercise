@@ -11,7 +11,7 @@ import {
 import { LabelOutlined } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 
-import tagColors from '/src/utils/mockdata/tag-colors';
+import { getTagColor } from '/src/utils';
 import useStore from '/src/store';
 
 const useStyles = makeStyles((theme) => ({
@@ -34,7 +34,7 @@ export default function NavListTags() {
     >
       {globalStore.tags.map((tag) => {
         const label = `LABEL:${tag}`;
-        const { color } = tagColors[tag] ?? tagColors.default;
+        const { color } = getTagColor(tag);
         return (
           <ListItem
             key={label}

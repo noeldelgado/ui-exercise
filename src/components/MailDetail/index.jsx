@@ -7,6 +7,7 @@ import MailDetailEmptyState from './MailDetailEmptyState';
 import MailDetailTopControls from './MailDetailTopControls';
 import MailDetailSenderInfo from './MailDetailSenderInfo';
 import MailDetailBody from './MailDetailBody';
+import { getUserInfo } from '/src/utils';
 import useStore from '/src/store';
 
 const useStyles = makeStyles((theme) => ({
@@ -25,6 +26,7 @@ export default function MailDetail() {
     (e) => e?.id === globalStore.activeEmailId,
   );
   const email = globalStore.emails?.[emailIndex];
+  const userInfo = getUserInfo(email?.sender);
 
   if (!email) return <MailDetailEmptyState />;
 
@@ -48,7 +50,7 @@ export default function MailDetail() {
             </Box>
           ))}
         </Box>
-        <MailDetailSenderInfo model={email} />
+        <MailDetailSenderInfo model={email} userInfo={userInfo} />
         <MailDetailBody model={email} />
       </Box>
     </Box>

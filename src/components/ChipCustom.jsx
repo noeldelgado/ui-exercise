@@ -3,7 +3,7 @@ import { string } from 'prop-types';
 import { Chip } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import tagColors from '/src/utils/mockdata/tag-colors';
+import { getTagColor } from '/src/utils';
 
 const useStyles = (props) =>
   makeStyles((theme) => ({
@@ -22,7 +22,7 @@ const useStyles = (props) =>
   }));
 
 export default function ChipCustom({ className, ...other }) {
-  const { background, color } = tagColors[other.label] ?? tagColors.default;
+  const { background, color } = getTagColor(other.label);
   const classes = useStyles({ background, color })();
 
   return (
