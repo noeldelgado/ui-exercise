@@ -1,28 +1,38 @@
-import React from 'react';
-import { array } from 'prop-types';
-import { List, ListItem, ListItemText } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { Box, List, ListItem, ListItemText } from '@material-ui/core';
+
+import { getFilteredEmails } from './utils';
 import useStore from '../../store';
 
-export default function MailList({ collection }) {
-  const [, globalActions] = useStore();
+export default function MailList() {
+  const [{ filter, emails }, globalActions] = useStore();
+  const [filteredItems, setFilteredItems] = useState([]);
+
+  useEffect(() => {
+    setFilteredItems(getFilteredEmails(filter, emails));
+  }, [emails]);
+
+  useEffect(() => {
+    setFilteredItems(getFilteredEmails(filter, emails));
+    globalActions.setActiveEmailId(null);
+  }, [filter]);
 
   return (
-    <List>
-      {collection.map((email) => (
-        <ListItem
-          key={email.id}
-          onClick={() => globalActions.setActiveEmailId(email.id)}
-          component="li"
-          button
-          divider
-        >
-          <ListItemText primary={email.sender} secondary={email.subject} />
-        </ListItem>
-      ))}
-    </List>
+    <Box>
+      {filter}
+      <List>
+        {filteredItems.map((email) => (
+          <ListItem
+            key={email.id}
+            onClick={() => globalActions.setActiveEmailId(email.id)}
+            component="li"
+            button
+            divider
+          >
+            <ListItemText primary={email.sender} secondary={email.subject} />
+          </ListItem>
+        ))}
+      </List>
+    </Box>
   );
 }
-
-MailList.propTypes = {
-  collection: array.isRequired,
-};

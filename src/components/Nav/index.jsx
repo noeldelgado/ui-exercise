@@ -7,32 +7,15 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@material-ui/core';
-import {
-  DeleteOutlined,
-  InboxOutlined,
-  StarBorderRounded,
-} from '@material-ui/icons';
+
 import NavUserInfo from './NavUserInfo';
+import { getNavFilterIcon } from './utils';
+import { NAV_FILTER_ITEMS } from '../../utils/constants';
 import useStore from '../../store';
 import logo from '../../logo.png';
 
-const NAV_ITEMS = [
-  {
-    text: 'INBOX',
-    icon: InboxOutlined,
-  },
-  {
-    text: 'STARRED',
-    icon: StarBorderRounded,
-  },
-  {
-    text: 'BIN',
-    icon: DeleteOutlined,
-  },
-];
-
 export default function Nav() {
-  const [globalState] = useStore();
+  const [globalStore, globalActions] = useStore();
 
   return (
     <Box
@@ -47,15 +30,19 @@ export default function Nav() {
         <img src={logo} alt="logo" />
       </Box>
 
-      <NavUserInfo model={globalState.user} />
+      <NavUserInfo model={globalStore.user} />
 
       <List>
-        {NAV_ITEMS.map(({ text, icon: Icon }) => (
-          <ListItem key={text} component="li" button dense>
-            <ListItemIcon>
-              <Icon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary={text} />
+        {Object.keys(NAV_FILTER_ITEMS).map((key) => (
+          <ListItem
+            key={key}
+            component="li"
+            button
+            dense
+            onClick={() => globalActions.setVisibilityFilter(key)}
+          >
+            <ListItemIcon>{getNavFilterIcon(key)}</ListItemIcon>
+            <ListItemText primary={key} />
             <Box mr={1}>
               <Badge badgeContent={1} />
             </Box>

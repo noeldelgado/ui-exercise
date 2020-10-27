@@ -15,7 +15,11 @@ export default function App() {
       try {
         const emails = await (await fetch(`/assets/data/emails.json`)).json();
         const user = await (await fetch(`/assets/data/user.json`)).json();
-        globalActions.setInitialFetchedData({ user, emails: emails.messages });
+        const newEmails = emails.messages.map((email) => ({
+          ...{ deleted: Math.random() > 0.5, starred: Math.random() > 0.5 },
+          ...email,
+        }));
+        globalActions.setInitialFetchedData({ user, emails: newEmails });
       } catch (err) {
         console.error(err);
       } finally {
@@ -30,7 +34,7 @@ export default function App() {
     <>
       <Nav />
       <Box component="main">
-        <MailList collection={globalStore.emails} />
+        <MailList />
         <MailDetail />
       </Box>
       <Fade

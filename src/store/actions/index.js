@@ -9,3 +9,7 @@ export function setInitialFetchedData(store, data) {
 export function setActiveEmailId(store, activeEmailId = null) {
   store.setState({ activeEmailId });
 }
+
+export function setVisibilityFilter(store, filter) {
+  store.setState({ filter });
+}
