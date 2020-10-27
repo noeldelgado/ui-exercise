@@ -1,6 +1,7 @@
 import React from 'react';
 import { array, bool, func, shape, string } from 'prop-types';
 import {
+  Avatar,
   Badge,
   Box,
   Checkbox,
@@ -11,13 +12,25 @@ import {
   Tooltip,
   Typography,
 } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 import ToggleButtonStar from '/src/components/ToggleButtonStar';
 import { formatDate } from '/src/utils';
 import useStore from '/src/store';
 
+const useStyles = makeStyles((theme) => ({
+  avatar: {
+    width: theme.spacing(3),
+    height: theme.spacing(3),
+    fontSize: '0.8rem',
+    marginRight: theme.spacing(1),
+  },
+}));
+
 export default function MailListItem({ model, onChange, selected = false }) {
   const [, globalActions] = useStore();
+  const classes = useStyles();
+
   const labelId = `checkbox-list-secondary-label-${model.id}`;
 
   const handleItemClick = () => {
@@ -40,10 +53,12 @@ export default function MailListItem({ model, onChange, selected = false }) {
       selected={selected}
       onClick={handleItemClick}
       component="li"
+      alignItems="flex-start"
       button
       divider
     >
-      <Box>
+      {/* CONTROLS */}
+      <Box ml={-1}>
         <Tooltip title="Select">
           <Checkbox
             size="small"
@@ -61,9 +76,13 @@ export default function MailListItem({ model, onChange, selected = false }) {
           />
         </Box>
       </Box>
+
+      {/* TEXT */}
       <Box>
+        {/* TEXT:{sender, date, readFeedback} */}
         <Box display="flex" justifyContent="space-between">
-          <Box>
+          <Box display="inline-flex" alignItems="center">
+            <Avatar className={classes.avatar} alt={model.sender} />
             <Typography
               variant="body2"
               color={model.read ? 'textSecondary' : 'inherit'}
@@ -85,20 +104,21 @@ export default function MailListItem({ model, onChange, selected = false }) {
             </Typography>
           </Box>
         </Box>
-        <Box>
-          <Typography
-            variant="body2"
-            color={model.read ? 'textSecondary' : 'textPrimary'}
-            noWrap
-          >
-            <Box component="span" fontWeight={model.read ? 400 : 500}>
-              {model.subject}
-            </Box>
-          </Typography>
-          <Typography variant="caption" color="textSecondary">
-            {model.body.substring(0, 100)}
-          </Typography>
-        </Box>
+        {/* TEXT:{subject, } */}
+        <Typography
+          variant="body2"
+          color={model.read ? 'textSecondary' : 'textPrimary'}
+          noWrap
+        >
+          <Box component="span" fontWeight={model.read ? 400 : 500}>
+            {model.subject}
+          </Box>
+        </Typography>
+        {/* TEXT:{bodyPreview} */}
+        <Typography variant="caption" color="textSecondary">
+          {model.body.substring(0, 100)}
+        </Typography>
+        {/* TEXT:tags */}
         <Box>
           {Boolean(model.tags?.length) && (
             <>
