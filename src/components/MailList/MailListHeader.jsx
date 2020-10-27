@@ -14,10 +14,11 @@ import {
   ArrowDropDownRounded,
   DeleteOutlined,
   DraftsOutlined,
+  MoveToInboxRounded,
   StarBorderRounded,
 } from '@material-ui/icons';
 
-import { EMAIL_CHECK_OPTIONS } from '/src/utils/constants';
+import { EMAIL_CHECK_OPTIONS, NAV_FILTER_ITEMS } from '/src/utils/constants';
 import useStore from '../../store';
 
 export default function MailListHeader({
@@ -25,7 +26,7 @@ export default function MailListHeader({
   filteredItems,
   selectedItemsIds,
 }) {
-  const [, globalActions] = useStore();
+  const [globalStore, globalActions] = useStore();
   const [menuAnchorEl, setMenuAnchorEl] = useState(null);
   const [checked, setChecked] = useState(false);
   const [indeterminated, setIndeterminated] = useState(false);
@@ -94,13 +95,27 @@ export default function MailListHeader({
       </Menu>
       <Divider orientation="vertical" flexItem />
       <Box display="flex" alignItems="center">
-        <Tooltip title="Delete">
-          <IconButton
-            onClick={() => globalActions.emails.setDeleted(selectedItemsIds, true)}
-          >
-            <DeleteOutlined fontSize="small" />
-          </IconButton>
-        </Tooltip>
+        {globalStore.filter === NAV_FILTER_ITEMS.BIN ? (
+          <Tooltip title="Move to inbox">
+            <IconButton
+              onClick={() =>
+                globalActions.emails.setDeleted(selectedItemsIds, false)
+              }
+            >
+              <MoveToInboxRounded fontSize="small" />
+            </IconButton>
+          </Tooltip>
+        ) : (
+          <Tooltip title="Delete">
+            <IconButton
+              onClick={() =>
+                globalActions.emails.setDeleted(selectedItemsIds, true)
+              }
+            >
+              <DeleteOutlined fontSize="small" />
+            </IconButton>
+          </Tooltip>
+        )}
         <Tooltip title="Mark as read">
           <IconButton
             onClick={() => globalActions.emails.setRead(selectedItemsIds, true)}

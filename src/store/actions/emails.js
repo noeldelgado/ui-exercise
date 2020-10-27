@@ -45,6 +45,12 @@ export function setDeleted(store, ids, value = true) {
 
   store.setState({ emails });
 
+  const len = ids.length;
   const movedTo = value ? 'Bin' : 'Inbox';
-  store.actions.app.setBanner(true, `Conversations moved to ${movedTo}`);
+  let bannerMessage =
+    len === 1
+      ? `Conversation moved to ${movedTo}`
+      : `${len} conversations moved to  ${movedTo}`;
+
+  store.actions.app.setBanner(true, bannerMessage);
 }
