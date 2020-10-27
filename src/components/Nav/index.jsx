@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Hidden } from '@material-ui/core';
+import { Box, Button, Divider, Hidden } from '@material-ui/core';
+import { AddRounded } from '@material-ui/icons';
 
 import NavUserInfo from './NavUserInfo';
 import NavListItems from './NavListItems';
@@ -8,7 +9,7 @@ import useStore from '../../store';
 import logo from '../../logo.png';
 
 export default function Nav() {
-  const [globalStore] = useStore();
+  const [globalStore, globalActions] = useStore();
 
   return (
     <Box
@@ -19,11 +20,24 @@ export default function Nav() {
       borderLeft={0}
       borderColor="divider"
     >
-      <Box px={2}>
+      <Box px={2} height={46} display="flex" alignItems="center">
         <img src={logo} alt="logo" />
       </Box>
+      <Divider />
       <Hidden xsDown>
         <NavUserInfo model={globalStore.user} />
+        <Box py={2} px={2}>
+          <Button
+            disableElevation
+            fullWidth
+            variant="outlined"
+            color="primary"
+            startIcon={<AddRounded />}
+            onClick={() => globalActions.app.setComposeEmailOpen(true)}
+          >
+            Compose
+          </Button>
+        </Box>
       </Hidden>
       <NavListItems />
       <NavListTags />

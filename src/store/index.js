@@ -14,6 +14,7 @@ const initialState = {
   activeEmailId: null,
 
   mobileNavOpen: false,
+  composeEmailOpen: false,
 
   banner: null,
   bannerMessage: null,

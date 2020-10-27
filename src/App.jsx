@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
-import { Box, Drawer, Fade, Hidden } from '@material-ui/core';
+import { Box, Fab, Drawer, Fade, Hidden } from '@material-ui/core';
+import { CreateRounded } from '@material-ui/icons';
 
 import LoadingScreen from './components/LoadingScreen';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import MailList from './components/MailList';
 import MailDetail from './components/MailDetail';
+import ComposeEmail from './components/ComposeEmail';
 import Banner from './components/Banner';
 import Api from './api';
 import useStore from './store';
@@ -52,6 +54,22 @@ export default function App() {
         >
           <Nav />
         </Drawer>
+        <Box
+          position="absolute"
+          right={16}
+          bottom={globalStore.banner || globalStore.composeEmailOpen ? 63 : 16}
+          zIndex={1}
+        >
+          <Fab
+            color="primary"
+            aria-label="add"
+            variant="extended"
+            onClick={() => globalActions.app.setComposeEmailOpen(true)}
+          >
+            <CreateRounded mr={10} />
+            <Box px={1}>Compose</Box>
+          </Fab>
+        </Box>
       </Hidden>
 
       <Box component="main">
@@ -63,6 +81,7 @@ export default function App() {
           <MailDetail />
         </Box>
       </Box>
+      <ComposeEmail />
       <Banner />
       <Fade
         unmountOnExit

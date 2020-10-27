@@ -51,3 +51,10 @@ export function setBanner(store, open = false, message = '') {
 export function setMobileNavOpen(store, open = false) {
   store.setState({ mobileNavOpen: open });
 }
+
+/**
+ * @param {bool} [open=false] if `true`, `ComposeEmail` widget is shown
+ */
+export function setComposeEmailOpen(store, value = false) {
+  store.setState({ composeEmailOpen: value });
+}
