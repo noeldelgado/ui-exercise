@@ -1,6 +1,8 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 
+import logo from '../logo.png';
+
 export default function Nav() {
   return (
     <Box
@@ -12,6 +14,7 @@ export default function Nav() {
       borderColor="divider"
     >
       Nav
+      <img src={logo} alt="logo" />
     </Box>
   );
 }
