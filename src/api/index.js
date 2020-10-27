@@ -4,6 +4,7 @@ const extendedEmailDefaults = {
   read: false,
   starred: false,
   deleted: false,
+  attachments: [],
 };
 
 export default {

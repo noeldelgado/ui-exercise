@@ -10,3 +10,5 @@ export const EMAIL_CHECK_OPTIONS = arrayToObjectKeys([
   'STARRED',
   'UNSTARRED',
 ]);
+
+export const ATTACHMENTS_TYPES = arrayToObjectKeys(['image', 'pdf']);

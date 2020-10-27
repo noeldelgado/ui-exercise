@@ -10,7 +10,7 @@ import {
   Tooltip,
   Typography,
 } from '@material-ui/core';
-import { DeleteRounded } from '@material-ui/icons';
+import { AttachFileRounded, DeleteRounded } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 
 import AvatarCustom from '/src/components/AvatarCustom';
@@ -143,6 +143,18 @@ export default function MailListItem({ model, onChange, selected = false }) {
             </Typography>
             {getTextContent(model.body).substring(0, 100)}
             <Box component="span" display="flex" pt={1}>
+              {Boolean(model.attachments?.length) && (
+                <Box
+                  component="span"
+                  display="inline-flex"
+                  alignItems="center"
+                  pr={0.5}
+                >
+                  <AttachFileRounded fontSize="inherit" />
+                  {model.attachments.length}
+                </Box>
+              )}
+
               {Boolean(model.tags?.length) && (
                 <>
                   {model.tags.map((tag, i) => (
@@ -176,6 +188,7 @@ MailListItem.propTypes = {
     read: bool.isRequired,
     starred: bool.isRequired,
     deleted: bool.isRequired,
+    attachments: array.isRequired,
   }).isRequired,
   selected: bool,
   onChange: func.isRequired,

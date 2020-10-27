@@ -4,6 +4,12 @@ export default {
     sender: 'jane.doe@gmail.com',
     read: true,
     starred: true,
+    attachments: [
+      {
+        type: 'other',
+        path: '/assets/mockdata/attachments/data.json',
+      },
+    ],
   },
   // important-info-about-account
   2: {
@@ -31,11 +37,39 @@ export default {
   9: {
     sender: 'jane.doe@gmail.com',
     tags: ['music', 'another-tag'],
+    attachments: [
+      {
+        type: 'pdf',
+        path: '/assets/mockdata/attachments/sample.pdf',
+      },
+    ],
   },
   // your flight confirmation
   10: {
     sender: 'noreply@nasa.gov',
     read: true,
     starred: true,
+    attachments: [
+      {
+        type: 'image',
+        path: '/assets/mockdata/attachments/image-01.jpg',
+      },
+      {
+        type: 'image',
+        path: '/assets/mockdata/attachments/image-02.jpg',
+      },
+      {
+        type: 'image',
+        path: '/assets/mockdata/attachments/image-03.jpg',
+      },
+      {
+        type: 'pdf',
+        path: '/assets/mockdata/attachments/sample.pdf',
+      },
+      {
+        type: 'other',
+        path: '/assets/mockdata/attachments/data.json',
+      },
+    ],
   },
 };
