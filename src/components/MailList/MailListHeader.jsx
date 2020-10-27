@@ -95,12 +95,16 @@ export default function MailListHeader({
       <Divider orientation="vertical" flexItem />
       <Box display="flex" alignItems="center">
         <Tooltip title="Delete">
-          <IconButton>
+          <IconButton
+            onClick={() => globalActions.emails.setDeleted(selectedItemsIds, true)}
+          >
             <DeleteOutlined fontSize="small" />
           </IconButton>
         </Tooltip>
         <Tooltip title="Mark as read">
-          <IconButton>
+          <IconButton
+            onClick={() => globalActions.emails.setRead(selectedItemsIds, true)}
+          >
             <DraftsOutlined fontSize="small" />
           </IconButton>
         </Tooltip>
