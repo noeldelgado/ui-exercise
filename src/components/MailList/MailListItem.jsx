@@ -110,7 +110,7 @@ export default function MailListItem({ model, onChange, selected = false }) {
             <Box>
               <Typography variant="caption" color="textSecondary" noWrap>
                 {formatDate(model.date)}
-                <Box ml={1} component="span">
+                <Box ml={1} component="span" position="relative" zIndex={0}>
                   <Badge
                     color="secondary"
                     variant="dot"
