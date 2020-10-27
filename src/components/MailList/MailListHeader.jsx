@@ -14,6 +14,7 @@ import {
   ArrowDropDownRounded,
   DeleteOutlined,
   DraftsOutlined,
+  MarkunreadOutlined,
   MoveToInboxRounded,
   StarBorderRounded,
 } from '@material-ui/icons';
@@ -30,6 +31,7 @@ export default function MailListHeader({
   const [menuAnchorEl, setMenuAnchorEl] = useState(null);
   const [checked, setChecked] = useState(false);
   const [indeterminated, setIndeterminated] = useState(false);
+  const [selectedUnread, setSelectedUnread] = useState(false);
 
   useEffect(() => {
     const selectedLen = selectedItemsIds.length;
@@ -46,6 +48,12 @@ export default function MailListHeader({
       setChecked(value);
       setIndeterminated(value);
     }
+
+    setSelectedUnread(
+      selectedItemsIds.some(
+        (id) => filteredItems.find((item) => item.id === id)?.read === false,
+      ),
+    );
   }, [selectedItemsIds, filteredItems]);
 
   const handleCheckboxClick = (ev) => {
@@ -95,6 +103,7 @@ export default function MailListHeader({
       </Menu>
       <Divider orientation="vertical" flexItem />
       <Box display="flex" alignItems="center">
+        {/* Restore, Delete */}
         {globalStore.filter === NAV_FILTER_ITEMS.BIN ? (
           <Tooltip title="Move to inbox">
             <IconButton
@@ -116,13 +125,29 @@ export default function MailListHeader({
             </IconButton>
           </Tooltip>
         )}
-        <Tooltip title="Mark as read">
-          <IconButton
-            onClick={() => globalActions.emails.setRead(selectedItemsIds, true)}
-          >
-            <DraftsOutlined fontSize="small" />
-          </IconButton>
-        </Tooltip>
+
+        {/* mark as read/unread */}
+        {selectedUnread ? (
+          <Tooltip title="Mark as read">
+            <IconButton
+              onClick={() =>
+                globalActions.emails.setRead(selectedItemsIds, true)
+              }
+            >
+              <DraftsOutlined fontSize="small" />
+            </IconButton>
+          </Tooltip>
+        ) : (
+          <Tooltip title="Mark as unread">
+            <IconButton
+              onClick={() =>
+                globalActions.emails.setRead(selectedItemsIds, false)
+              }
+            >
+              <MarkunreadOutlined fontSize="small" />
+            </IconButton>
+          </Tooltip>
+        )}
         <Tooltip title="Add star">
           <IconButton
             onClick={() =>
