@@ -1,7 +1,8 @@
 import React from 'react';
-import { Badge, Box, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { Avatar, Badge, Box, List, ListItem, ListItemAvatar, ListItemIcon, ListItemText, Typography } from '@material-ui/core';
 import { DeleteOutlined, InboxOutlined, MailOutlined, SendOutlined, StarBorderRounded } from '@material-ui/icons';
-
+import NavUserInfo from './Nav/NavUserInfo';
+import useStore from '../store';
 import logo from '../logo.png';
 
 const NAV_ITEMS = [
@@ -20,6 +21,8 @@ const NAV_ITEMS = [
 ];
 
 export default function Nav() {
+  const [globalState, globalActions] = useStore();
+
   return (
     <Box
       component="aside"
@@ -32,9 +35,12 @@ export default function Nav() {
       <Box px={2}>
         <img src={logo} alt="logo" />
       </Box>
+
+      <NavUserInfo model={globalState.user}/>
+
       <List>
         {NAV_ITEMS.map(({ text, icon: Icon }) => (
-          <ListItem component="li" button dense>
+          <ListItem key={text} component="li" button dense>
             <ListItemIcon>
               <Icon fontSize="small" />
             </ListItemIcon>

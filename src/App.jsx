@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Box, Fade } from '@material-ui/core';
 
 import LoadingScreen from './components/LoadingScreen';
-import Nav from './components/Nav';
+import Nav from './components/Nav.jsx';
 import useStore from './store';
 
 export default function App() {
