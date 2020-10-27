@@ -103,9 +103,8 @@ export default function MailListHeader({
           </MenuItem>
         ))}
       </Menu>
-      <Divider orientation="vertical" flexItem />
       <Fade in={checked}>
-        <Box display="flex" alignItems="center" pl={1}>
+        <Box display="flex" alignItems="center">
           {/* Restore, Delete */}
           {globalStore.filter === NAV_FILTER_ITEMS.BIN ? (
             <Tooltip title="Move to inbox">
