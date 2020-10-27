@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { array } from 'prop-types';
 import { List, ListItem, ListItemText } from '@material-ui/core';
 import useStore from '../../store';
 
@@ -21,3 +22,7 @@ export default function MailList({ collection }) {
     </List>
   );
 }
+
+MailList.propTypes = {
+  collection: array.isRequired,
+};

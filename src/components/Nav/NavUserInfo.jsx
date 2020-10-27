@@ -1,4 +1,5 @@
 import React from 'react';
+import { shape, string } from 'prop-types';
 import {
   Avatar,
   List,
@@ -40,3 +41,10 @@ export default function NavUserInfo({ model }) {
     </List>
   );
 }
+
+NavUserInfo.propTypes = {
+  model: shape({
+    name: string,
+    avatar: string,
+  }),
+};

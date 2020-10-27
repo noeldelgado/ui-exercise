@@ -13,9 +13,7 @@ export default function MailDetail() {
 
   return (
     <Box>
-      <Typography>
-        {email.subject}
-      </Typography>
+      <Typography>{email.subject}</Typography>
     </Box>
   );
 }

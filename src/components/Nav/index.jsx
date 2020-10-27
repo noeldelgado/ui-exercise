@@ -1,20 +1,15 @@
 import React from 'react';
 import {
-  Avatar,
   Badge,
   Box,
   List,
   ListItem,
-  ListItemAvatar,
   ListItemIcon,
   ListItemText,
-  Typography,
 } from '@material-ui/core';
 import {
   DeleteOutlined,
   InboxOutlined,
-  MailOutlined,
-  SendOutlined,
   StarBorderRounded,
 } from '@material-ui/icons';
 import NavUserInfo from './NavUserInfo';
@@ -37,7 +32,7 @@ const NAV_ITEMS = [
 ];
 
 export default function Nav() {
-  const [globalState, globalActions] = useStore();
+  const [globalState] = useStore();
 
   return (
     <Box
