@@ -78,7 +78,7 @@ export default function MailListItem({ model, onChange, selected = false }) {
       </Box>
 
       {/* TEXT */}
-      <Box>
+      <Box flexGrow={1}>
         {/* TEXT:{sender, date, readFeedback} */}
         <Box display="flex" justifyContent="space-between">
           <Box display="inline-flex" alignItems="center">

@@ -34,8 +34,13 @@ export default function App() {
     <>
       <Nav />
       <Box component="main">
-        <MailList />
-        <MailDetail />
+        <Box
+          className="mainInner"
+          data-active-email-id={globalStore.activeEmailId}
+        >
+          <MailList />
+          <MailDetail />
+        </Box>
       </Box>
       <Banner />
       <Fade

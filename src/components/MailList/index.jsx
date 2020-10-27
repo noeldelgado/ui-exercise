@@ -1,15 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Divider, List, ListItem, ListSubheader } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 import MailListHeader from './MailListHeader';
 import MailListItem from './MailListItem';
 import { getFilteredEmails, getCheckedEmails } from './utils';
 import useStore from '../../store';
 
+const useStyles = makeStyles((theme) => ({
+  list: {
+    backgroundColor: theme.palette.background.paper,
+    overflow: 'auto',
+    height: '100%',
+  },
+}));
+
 export default function MailList() {
   const [{ filter, emails }, globalActions] = useStore();
   const [filteredItems, setFilteredItems] = useState([]);
   const [selectedItemsIds, setSelectedItemsIds] = useState([]);
+  const classes = useStyles();
 
   useEffect(() => {
     setFilteredItems(getFilteredEmails(filter, emails));
@@ -39,7 +49,10 @@ export default function MailList() {
         onCheckEmailOptionClick={handleCheckEmailOptionClick}
       />
       <Divider />
-      <List subheader={<ListSubheader>{filter}</ListSubheader>}>
+      <List
+        subheader={<ListSubheader>{filter}</ListSubheader>}
+        className={classes.list}
+      >
         {filteredItems.length ? (
           filteredItems.map((email) => (
             <MailListItem
