@@ -35,7 +35,11 @@ export default function MailList() {
 
   return (
     <Box>
-      <MailListHeader onCheckEmailOptionClick={handleCheckEmailOptionClick} />
+      <MailListHeader
+        filteredItems={filteredItems}
+        selectedItems={selectedItems}
+        onCheckEmailOptionClick={handleCheckEmailOptionClick}
+      />
       <Divider />
       <List subheader={<ListSubheader>{filter}</ListSubheader>}>
         {filteredItems.map((email) => (

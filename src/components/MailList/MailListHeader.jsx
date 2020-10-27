@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { func } from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import { array, func } from 'prop-types';
 import {
   Box,
   Button,
@@ -19,8 +19,31 @@ import {
 
 import { EMAIL_CHECK_OPTIONS } from '/src/utils/constants';
 
-export default function MailListHeader({ onCheckEmailOptionClick }) {
+export default function MailListHeader({
+  onCheckEmailOptionClick,
+  filteredItems,
+  selectedItems,
+}) {
   const [menuAnchorEl, setMenuAnchorEl] = useState(null);
+  const [checked, setChecked] = useState(false);
+  const [indeterminated, setIndeterminated] = useState(false);
+
+  useEffect(() => {
+    const selectedLen = selectedItems.length;
+    const filteredLen = filteredItems.length;
+
+    if (selectedLen === 0 && filteredLen === 0) {
+      setChecked(false);
+      setIndeterminated(false);
+    } else if (selectedLen === filteredLen) {
+      setChecked(true);
+      setIndeterminated(false);
+    } else {
+      const value = selectedLen ? true : false;
+      setChecked(value);
+      setIndeterminated(value);
+    }
+  }, [selectedItems, filteredItems]);
 
   const handleCheckboxClick = (ev) => {
     ev.stopPropagation();
@@ -42,7 +65,12 @@ export default function MailListHeader({ onCheckEmailOptionClick }) {
           aria-haspopup="true"
           onClick={(ev) => setMenuAnchorEl(ev.currentTarget)}
         >
-          <Checkbox size="small" onClick={handleCheckboxClick} />
+          <Checkbox
+            size="small"
+            checked={checked}
+            indeterminate={indeterminated}
+            onClick={handleCheckboxClick}
+          />
           <ArrowDropDownRounded />
         </Button>
       </Tooltip>
@@ -86,4 +114,6 @@ export default function MailListHeader({ onCheckEmailOptionClick }) {
 
 MailListHeader.propTypes = {
   onCheckEmailOptionClick: func.isRequired,
+  filteredItems: array.isRequired,
+  selectedItems: array.isRequired,
 };
