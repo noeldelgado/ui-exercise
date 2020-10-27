@@ -141,7 +141,9 @@ export default function MailListItem({ model, onChange, selected = false }) {
                 {model.subject}
               </Box>
             </Typography>
-            {getTextContent(model.body).substring(0, 100)}
+            <Typography variant="body2" noWrap>
+              {getTextContent(model.body).substring(0, 100)}
+            </Typography>
             <Box component="span" display="flex" pt={1}>
               {Boolean(model.attachments?.length) && (
                 <Box
