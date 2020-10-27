@@ -10,6 +10,7 @@ import {
   Tooltip,
   Typography,
 } from '@material-ui/core';
+import { DeleteRounded } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 
 import AvatarCustom from '/src/components/AvatarCustom';
@@ -129,6 +130,13 @@ export default function MailListItem({ model, onChange, selected = false }) {
               color={model.read ? 'textSecondary' : 'textPrimary'}
               noWrap
             >
+              {model.deleted && (
+                <DeleteRounded
+                  color="action"
+                  fontSize="small"
+                  style={{ verticalAlign: 'middle' }}
+                />
+              )}
               <Box component="span" fontWeight={model.read ? 400 : 500}>
                 {model.subject}
               </Box>
