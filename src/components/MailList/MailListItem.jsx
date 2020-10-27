@@ -100,7 +100,7 @@ export default function MailListItem({ model, onChange, selected = false }) {
               </Typography>
             </Box>
             <Box>
-              <Typography variant="caption" color="textSecondary">
+              <Typography variant="caption" color="textSecondary" noWrap>
                 {formatDate(model.date)}
                 <Box ml={1} component="span">
                   <Badge
@@ -116,6 +116,8 @@ export default function MailListItem({ model, onChange, selected = false }) {
         secondary={
           <>
             <Typography
+              component="span"
+              display="block"
               variant="body2"
               color={model.read ? 'textSecondary' : 'textPrimary'}
               noWrap
