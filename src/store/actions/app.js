@@ -8,15 +8,20 @@ export function setLoading(store, loading = true) {
 
 /**
  * Sets `user`, `emails` and globalStore `tags`.
+ * - Emails are DESC ordered by date
  * - Tags are read from emails
  * @param {object} data
  * @property {object} data.user - faked logged in user
  * @property {array} data.emails - faked emails (sent and received)
  */
 export function setInitialFetchedData(store, data) {
+  const emails = data.emails
+    .reverse()
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
   const tags = [...new Set(data.emails.flatMap((email) => email.tags))];
 
-  store.setState({ user: data.user, emails: data.emails, tags });
+  store.setState({ user: data.user, emails, tags });
 }
 
 /**
