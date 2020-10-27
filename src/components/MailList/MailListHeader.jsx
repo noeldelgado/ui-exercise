@@ -5,6 +5,7 @@ import {
   Button,
   Checkbox,
   Divider,
+  Fade,
   IconButton,
   Menu,
   MenuItem,
@@ -102,62 +103,64 @@ export default function MailListHeader({
         ))}
       </Menu>
       <Divider orientation="vertical" flexItem />
-      <Box display="flex" alignItems="center">
-        {/* Restore, Delete */}
-        {globalStore.filter === NAV_FILTER_ITEMS.BIN ? (
-          <Tooltip title="Move to inbox">
-            <IconButton
-              onClick={() =>
-                globalActions.emails.setDeleted(selectedItemsIds, false)
-              }
-            >
-              <MoveToInboxRounded fontSize="small" />
-            </IconButton>
-          </Tooltip>
-        ) : (
-          <Tooltip title="Delete">
-            <IconButton
-              onClick={() =>
-                globalActions.emails.setDeleted(selectedItemsIds, true)
-              }
-            >
-              <DeleteOutlined fontSize="small" />
-            </IconButton>
-          </Tooltip>
-        )}
+      <Fade in={checked}>
+        <Box display="flex" alignItems="center" pl={1}>
+          {/* Restore, Delete */}
+          {globalStore.filter === NAV_FILTER_ITEMS.BIN ? (
+            <Tooltip title="Move to inbox">
+              <IconButton
+                onClick={() =>
+                  globalActions.emails.setDeleted(selectedItemsIds, false)
+                }
+              >
+                <MoveToInboxRounded fontSize="small" />
+              </IconButton>
+            </Tooltip>
+          ) : (
+            <Tooltip title="Delete">
+              <IconButton
+                onClick={() =>
+                  globalActions.emails.setDeleted(selectedItemsIds, true)
+                }
+              >
+                <DeleteOutlined fontSize="small" />
+              </IconButton>
+            </Tooltip>
+          )}
 
-        {/* mark as read/unread */}
-        {selectedUnread ? (
-          <Tooltip title="Mark as read">
+          {/* mark as read/unread */}
+          {selectedUnread ? (
+            <Tooltip title="Mark as read">
+              <IconButton
+                onClick={() =>
+                  globalActions.emails.setRead(selectedItemsIds, true)
+                }
+              >
+                <DraftsOutlined fontSize="small" />
+              </IconButton>
+            </Tooltip>
+          ) : (
+            <Tooltip title="Mark as unread">
+              <IconButton
+                onClick={() =>
+                  globalActions.emails.setRead(selectedItemsIds, false)
+                }
+              >
+                <MarkunreadOutlined fontSize="small" />
+              </IconButton>
+            </Tooltip>
+          )}
+          <Tooltip title="Add star">
             <IconButton
               onClick={() =>
-                globalActions.emails.setRead(selectedItemsIds, true)
+                globalActions.emails.setStarred(selectedItemsIds, true)
               }
             >
-              <DraftsOutlined fontSize="small" />
+              <StarBorderRounded fontSize="small" />
             </IconButton>
           </Tooltip>
-        ) : (
-          <Tooltip title="Mark as unread">
-            <IconButton
-              onClick={() =>
-                globalActions.emails.setRead(selectedItemsIds, false)
-              }
-            >
-              <MarkunreadOutlined fontSize="small" />
-            </IconButton>
-          </Tooltip>
-        )}
-        <Tooltip title="Add star">
-          <IconButton
-            onClick={() =>
-              globalActions.emails.setStarred(selectedItemsIds, true)
-            }
-          >
-            <StarBorderRounded fontSize="small" />
-          </IconButton>
-        </Tooltip>
-      </Box>
+        </Box>
+      </Fade>
     </Box>
   );
 }
