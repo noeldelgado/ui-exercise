@@ -11,7 +11,8 @@ import {
 import { LabelOutlined } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 
-import useStore from '../../store';
+import tagColors from '/src/utils/mockdata/tag-colors';
+import useStore from '/src/store';
 
 const useStyles = makeStyles((theme) => ({
   listItemIcon: {
@@ -33,6 +34,7 @@ export default function NavListTags() {
     >
       {globalStore.tags.map((tag) => {
         const label = `LABEL:${tag}`;
+        const { color } = tagColors[tag] ?? tagColors.default;
         return (
           <ListItem
             key={label}
@@ -42,7 +44,7 @@ export default function NavListTags() {
             button
             dense
           >
-            <ListItemIcon classes={{ root: classes.listItemIcon }}>
+            <ListItemIcon classes={{ root: classes.listItemIcon }} style={{ color }}>
               <LabelOutlined fontSize="small" />
             </ListItemIcon>
             <ListItemText primary={tag} />

@@ -5,7 +5,6 @@ import {
   Badge,
   Box,
   Checkbox,
-  Chip,
   ListItem,
   ListItemIcon,
   ListItemText,
@@ -14,6 +13,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+import ChipCustom from '/src/components/ChipCustom';
 import ToggleButtonStar from '/src/components/ToggleButtonStar';
 import { formatDate, getTextContent } from '/src/utils';
 import useStore from '/src/store';
@@ -132,7 +132,7 @@ export default function MailListItem({ model, onChange, selected = false }) {
                 <>
                   {model.tags.map((tag, i) => (
                     <Box key={i} component="span" mr={0.5}>
-                      <Chip
+                      <ChipCustom
                         label={tag}
                         component="span"
                         size="small"

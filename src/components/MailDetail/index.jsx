@@ -1,7 +1,8 @@
 import React from 'react';
-import { Box, Chip, Divider, Typography } from '@material-ui/core';
+import { Box, Divider, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+import ChipCustom from '/src/components/ChipCustom';
 import MailDetailEmptyState from './MailDetailEmptyState';
 import MailDetailTopControls from './MailDetailTopControls';
 import MailDetailSenderInfo from './MailDetailSenderInfo';
@@ -43,7 +44,7 @@ export default function MailDetail() {
           </Box>
           {email.tags.map((tag, index) => (
             <Box key={`${tag}-${index}`} mr={0.5}>
-              <Chip label={tag} size="small" variant="outlined" />
+              <ChipCustom label={tag} size="small" variant="outlined" />
             </Box>
           ))}
         </Box>
