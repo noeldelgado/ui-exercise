@@ -19,6 +19,7 @@
     "@web/test-runner": "^0.9.0",
     "chai": "^4.2.0",
     "prettier": "^2.0.5",
-    "snowpack": "^2.15.1"
+    "snowpack": "^2.15.1",
+    "use-global-hook": "^0.2.1"
   }
 }
