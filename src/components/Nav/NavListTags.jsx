@@ -44,7 +44,10 @@ export default function NavListTags() {
             button
             dense
           >
-            <ListItemIcon classes={{ root: classes.listItemIcon }} style={{ color }}>
+            <ListItemIcon
+              classes={{ root: classes.listItemIcon }}
+              style={{ color }}
+            >
               <LabelOutlined fontSize="small" />
             </ListItemIcon>
             <ListItemText primary={tag} />

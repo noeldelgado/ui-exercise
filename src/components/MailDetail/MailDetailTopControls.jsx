@@ -97,6 +97,5 @@ MailDetailTopControls.propTypes = {
     read: bool.isRequired,
     starred: bool.isRequired,
     deleted: bool.isRequired,
-    attachments: array.isRequired,
   }).isRequired,
 };

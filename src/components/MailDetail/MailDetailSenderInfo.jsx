@@ -1,7 +1,8 @@
 import React from 'react';
 import { array, bool, shape, string } from 'prop-types';
-import { Avatar, Box, Typography } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 
+import AvatarCustom from '/src/components/AvatarCustom';
 import { formatDate } from '/src/utils';
 
 export default function MailDetailSenderInfo({ model }) {
@@ -9,7 +10,7 @@ export default function MailDetailSenderInfo({ model }) {
     <Box pt={2} px={3}>
       <Box display="flex" justifyContent="space-between" flexWrap="wrap">
         <Box display="flex" pb={1}>
-          <Avatar key={model.sender} alt={model.sender} />
+          <AvatarCustom key={model.sender} alt={model.sender} />
           <Box ml={1}>
             <Typography component="p" variant="body2" noWrap>
               <Box component="span" fontWeight={500}>
@@ -46,6 +47,5 @@ MailDetailSenderInfo.propTypes = {
     read: bool.isRequired,
     starred: bool.isRequired,
     deleted: bool.isRequired,
-    attachments: array.isRequired,
   }).isRequired,
 };

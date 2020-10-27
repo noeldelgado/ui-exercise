@@ -1,7 +1,6 @@
 import React from 'react';
 import { array, bool, func, shape, string } from 'prop-types';
 import {
-  Avatar,
   Badge,
   Box,
   Checkbox,
@@ -13,6 +12,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+import AvatarCustom from '/src/components/AvatarCustom';
 import ChipCustom from '/src/components/ChipCustom';
 import ToggleButtonStar from '/src/components/ToggleButtonStar';
 import { formatDate, getTextContent } from '/src/utils';
@@ -90,7 +90,7 @@ export default function MailListItem({ model, onChange, selected = false }) {
         primary={
           <Box display="flex" justifyContent="space-between">
             <Box display="inline-flex" alignItems="center">
-              <Avatar className={classes.avatar} alt={model.sender} />
+              <AvatarCustom className={classes.avatar} alt={model.sender} />
               <Typography
                 variant="body2"
                 color={model.read ? 'textSecondary' : 'inherit'}
