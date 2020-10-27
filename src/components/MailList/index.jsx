@@ -42,36 +42,40 @@ export default function MailList() {
       />
       <Divider />
       <List subheader={<ListSubheader>{filter}</ListSubheader>}>
-        {filteredItems.map((email) => (
-          <ListItem
-            key={email.id}
-            onClick={() => globalActions.app.setActiveEmailId(email.id)}
-            component="li"
-            selected={selectedItemsIds.includes(email.id)}
-            button
-            divider
-          >
-            <ListItemText primary={email.sender} secondary={email.subject} />
-            <Box>
-              {email.date}
-              <br />
-              read: {String(email.read)}
-              <br />
-              starred: {String(email.starred)}
-              <br />
-              deleted: {String(email.deleted)}
-              <br />
-              {email.tags.map((tag, index) => (
-                <Chip
-                  key={`${tag}-${index}`}
-                  label={tag}
-                  size="small"
-                  variant="outlined"
-                />
-              ))}
-            </Box>
-          </ListItem>
-        ))}
+        {filteredItems.length ? (
+          filteredItems.map((email) => (
+            <ListItem
+              key={email.id}
+              onClick={() => globalActions.app.setActiveEmailId(email.id)}
+              component="li"
+              selected={selectedItemsIds.includes(email.id)}
+              button
+              divider
+            >
+              <ListItemText primary={email.sender} secondary={email.subject} />
+              <Box>
+                {email.date}
+                <br />
+                read: {String(email.read)}
+                <br />
+                starred: {String(email.starred)}
+                <br />
+                deleted: {String(email.deleted)}
+                <br />
+                {email.tags.map((tag, index) => (
+                  <Chip
+                    key={`${tag}-${index}`}
+                    label={tag}
+                    size="small"
+                    variant="outlined"
+                  />
+                ))}
+              </Box>
+            </ListItem>
+          ))
+        ) : (
+          <ListItem>There are no conversations with this label.</ListItem>
+        )}
       </List>
     </Box>
   );
