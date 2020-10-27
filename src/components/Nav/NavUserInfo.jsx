@@ -1,16 +1,19 @@
 import React from 'react';
-import { Avatar, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@material-ui/core';
+import {
+  Avatar,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Typography,
+} from '@material-ui/core';
 
 export default function NavUserInfo({ model }) {
   return (
     <List>
       <ListItem>
         <ListItemAvatar>
-          <Avatar
-            variant="rounded"
-            alt={model?.name}
-            src={model?.avatar}
-          />
+          <Avatar variant="rounded" alt={model?.name} src={model?.avatar} />
         </ListItemAvatar>
         <ListItemText
           primary={

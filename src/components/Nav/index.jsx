@@ -1,9 +1,25 @@
 import React from 'react';
-import { Avatar, Badge, Box, List, ListItem, ListItemAvatar, ListItemIcon, ListItemText, Typography } from '@material-ui/core';
-import { DeleteOutlined, InboxOutlined, MailOutlined, SendOutlined, StarBorderRounded } from '@material-ui/icons';
-import NavUserInfo from './Nav/NavUserInfo';
-import useStore from '../store';
-import logo from '../logo.png';
+import {
+  Avatar,
+  Badge,
+  Box,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+} from '@material-ui/core';
+import {
+  DeleteOutlined,
+  InboxOutlined,
+  MailOutlined,
+  SendOutlined,
+  StarBorderRounded,
+} from '@material-ui/icons';
+import NavUserInfo from './NavUserInfo';
+import useStore from '../../store';
+import logo from '../../logo.png';
 
 const NAV_ITEMS = [
   {
@@ -17,7 +33,7 @@ const NAV_ITEMS = [
   {
     text: 'BIN',
     icon: DeleteOutlined,
-  }
+  },
 ];
 
 export default function Nav() {
@@ -36,7 +52,7 @@ export default function Nav() {
         <img src={logo} alt="logo" />
       </Box>
 
-      <NavUserInfo model={globalState.user}/>
+      <NavUserInfo model={globalState.user} />
 
       <List>
         {NAV_ITEMS.map(({ text, icon: Icon }) => (
