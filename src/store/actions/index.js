@@ -3,7 +3,9 @@ export function setLoading(store, loading = true) {
 }
 
 export function setInitialFetchedData(store, data) {
-  store.setState({ user: data.user, emails: data.emails });
+  const tags = [...new Set(data.emails.flatMap((email) => email.tags))];
+
+  store.setState({ user: data.user, emails: data.emails, tags });
 }
 
 export function setActiveEmailId(store, activeEmailId = null) {

@@ -8,6 +8,7 @@ const initialState = {
 
   user: {},
   emails: [],
+  tags: [],
 
   filter: NAV_FILTER_ITEMS.INBOX,
   activeEmailId: null,

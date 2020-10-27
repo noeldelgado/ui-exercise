@@ -6,7 +6,9 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  ListSubheader,
 } from '@material-ui/core';
+import { LabelOutlined } from '@material-ui/icons';
 
 import NavUserInfo from './NavUserInfo';
 import { getNavFilterIcon } from './utils';
@@ -32,14 +34,14 @@ export default function Nav() {
 
       <NavUserInfo model={globalStore.user} />
 
-      <List>
+      <List subheader={<ListSubheader>Mailboxes</ListSubheader>}>
         {Object.keys(NAV_FILTER_ITEMS).map((key) => (
           <ListItem
             key={key}
             component="li"
+            onClick={() => globalActions.setVisibilityFilter(key)}
             button
             dense
-            onClick={() => globalActions.setVisibilityFilter(key)}
           >
             <ListItemIcon>{getNavFilterIcon(key)}</ListItemIcon>
             <ListItemText primary={key} />
@@ -48,6 +50,26 @@ export default function Nav() {
             </Box>
           </ListItem>
         ))}
+      </List>
+
+      <List subheader={<ListSubheader>Labels</ListSubheader>}>
+        {globalStore.tags.map((tag) => {
+          const label = `LABEL:${tag}`;
+          return (
+            <ListItem
+              key={label}
+              component="li"
+              onClick={() => globalActions.setVisibilityFilter(label)}
+              button
+              dense
+            >
+              <ListItemIcon>
+                <LabelOutlined fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary={tag} />
+            </ListItem>
+          );
+        })}
       </List>
     </Box>
   );
