@@ -12,6 +12,9 @@ const initialState = {
 
   filter: NAV_FILTER_ITEMS.INBOX,
   activeEmailId: null,
+
+  banner: null,
+  bannerMessage: null,
 };
 
 export default globalHook(React, initialState, actions);

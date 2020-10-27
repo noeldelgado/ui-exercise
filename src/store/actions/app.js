@@ -34,3 +34,12 @@ export function setActiveEmailId(store, activeEmailId = null) {
 export function setVisibilityFilter(store, filter) {
   store.setState({ filter });
 }
+
+/**
+ * Updates banner/snackbar state visibility
+ * @param {bool} [open=false] whether or not `Snackbar` should be shown
+ * @param {string} [message=''] the message to display
+ */
+export function setBanner(store, open = false, message = '') {
+  store.setState({ banner: open, bannerMessage: message });
+}

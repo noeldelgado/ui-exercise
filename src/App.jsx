@@ -5,6 +5,7 @@ import LoadingScreen from './components/LoadingScreen';
 import Nav from './components/Nav';
 import MailList from './components/MailList';
 import MailDetail from './components/MailDetail';
+import Banner from './components/Banner';
 import Api from './api';
 import useStore from './store';
 
@@ -36,6 +37,7 @@ export default function App() {
         <MailList />
         <MailDetail />
       </Box>
+      <Banner />
       <Fade
         unmountOnExit
         in={globalStore.loading}

@@ -44,4 +44,7 @@ export function setDeleted(store, ids, value = true) {
   });
 
   store.setState({ emails });
+
+  const movedTo = value ? 'Bin' : 'Inbox';
+  store.actions.app.setBanner(true, `Conversations moved to ${movedTo}`);
 }
