@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Box, Fab, Drawer, Fade, Hidden } from '@material-ui/core';
 import { CreateRounded } from '@material-ui/icons';
 
-import LoadingScreen from './components/LoadingScreen';
+import LoadingScreen, { ANIMATION_TIMEOUT } from './components/LoadingScreen';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import MailList from './components/MailList';
@@ -32,7 +32,7 @@ export default function App() {
       } finally {
         setTimeout(() => {
           globalActions.app.setLoading(false);
-        }, 0);
+        }, ANIMATION_TIMEOUT);
       }
     })();
   }, []);
