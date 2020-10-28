@@ -73,5 +73,5 @@ MailDetailSenderInfo.propTypes = {
   userInfo: shape({
     name: string,
     avatar: string,
-  }).isRequired,
+  }),
 };
