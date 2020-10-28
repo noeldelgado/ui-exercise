@@ -26,12 +26,18 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '0.8rem',
     marginRight: theme.spacing(1),
   },
+  active: {
+    boxShadow: `inset ${theme.spacing(0.5)}px 0 0 ${
+      theme.palette.secondary.main
+    }`,
+  },
 }));
 
 export default function MailListItem({ model, onChange, selected = false }) {
-  const [, globalActions] = useStore();
+  const [globalStore, globalActions] = useStore();
   const classes = useStyles();
 
+  const isActive = model.id === globalStore.activeEmailId;
   const labelId = `checkbox-list-secondary-label-${model.id}`;
   const userInfo = getUserInfo(model.sender);
 
@@ -52,8 +58,9 @@ export default function MailListItem({ model, onChange, selected = false }) {
 
   return (
     <ListItem
-      selected={selected}
+      selected={selected || isActive}
       onClick={handleItemClick}
+      className={isActive ? classes.active : ''}
       component="li"
       alignItems="flex-start"
       button
