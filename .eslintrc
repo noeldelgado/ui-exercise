@@ -11,6 +11,9 @@
     "plugin:prettier/recommended"
   ],
   "globals": {
+    "describe": "readonly",
+    "expect": "readonly",
+    "it": "readonly",
     "test": "readonly"
   },
   "parser": "babel-eslint",
