@@ -18,6 +18,7 @@
     "@snowpack/app-scripts-react": "^1.12.5",
     "@snowpack/plugin-dotenv": "^2.0.4",
     "@snowpack/plugin-react-refresh": "^2.3.4",
+    "@snowpack/plugin-webpack": "^2.0.17",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.0.0",
     "babel-eslint": "^10.1.0",

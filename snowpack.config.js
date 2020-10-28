@@ -3,7 +3,11 @@ module.exports = {
     public: '/',
     src: '/src',
   },
-  plugins: ['@snowpack/plugin-react-refresh', '@snowpack/plugin-dotenv'],
+  plugins: [
+    '@snowpack/plugin-react-refresh',
+    '@snowpack/plugin-dotenv',
+    '@snowpack/plugin-webpack',
+  ],
   install: [
     /* ... */
   ],
@@ -15,6 +19,7 @@ module.exports = {
   },
   buildOptions: {
     /* ... */
+    clean: true,
   },
   proxy: {
     /* ... */
