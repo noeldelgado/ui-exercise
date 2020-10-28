@@ -31,6 +31,14 @@ export default function MailList() {
     globalActions.app.setActiveEmailId(null);
   }, [filter]);
 
+  useEffect(() => {
+    setSelectedItemsIds(
+      filteredItems
+        .filter((item) => selectedItemsIds.includes(item.id))
+        .map((i) => i.id),
+    );
+  }, [filteredItems]);
+
   const handleItemChange = (id, checked) => {
     if (checked) return setSelectedItemsIds([...selectedItemsIds, id]);
     setSelectedItemsIds(selectedItemsIds.filter((i) => i !== id));
