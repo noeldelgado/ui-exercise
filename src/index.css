@@ -51,7 +51,10 @@ main {
 @media (min-width: 960px) {
   .mainInner { min-width: 100%; }
   .mainInner > div { min-width: initial; }
-  .mainInner > div:first-child { width: clamp(340px, 25vw, 400px); }
+  .mainInner > div:first-child {
+    width: 340px;
+    width: clamp(340px, 25vw, 400px);
+  }
   [data-active-email-id] { transform: translate3d(0, 0, 0); }
 }
 
