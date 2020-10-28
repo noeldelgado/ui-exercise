@@ -7,7 +7,7 @@ import {
   SearchRounded,
 } from '@material-ui/icons';
 
-import useStore from '/src/store';
+import useStore from '../store';
 
 const useStyles = makeStyles((theme) => ({
   root: {

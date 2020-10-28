@@ -13,11 +13,11 @@ import {
 import { AttachFileRounded, DeleteRounded } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 
-import AvatarCustom from '/src/components/AvatarCustom';
-import ChipCustom from '/src/components/ChipCustom';
-import ToggleButtonStar from '/src/components/ToggleButtonStar';
-import { formatDate, getTextContent, getUserInfo } from '/src/utils';
-import useStore from '/src/store';
+import AvatarCustom from '../AvatarCustom';
+import ChipCustom from '../ChipCustom';
+import ToggleButtonStar from '../ToggleButtonStar';
+import { formatDate, getTextContent, getUserInfo } from '../../utils';
+import useStore from '../../store';
 
 const useStyles = makeStyles((theme) => ({
   avatar: {

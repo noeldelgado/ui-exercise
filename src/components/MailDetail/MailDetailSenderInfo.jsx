@@ -2,9 +2,9 @@ import React from 'react';
 import { array, bool, shape, string } from 'prop-types';
 import { Box, Typography } from '@material-ui/core';
 
-import AvatarCustom from '/src/components/AvatarCustom';
-import { formatDate } from '/src/utils';
-import useStore from '/src/store';
+import AvatarCustom from '../AvatarCustom';
+import { formatDate } from '../../utils';
+import useStore from '../../store';
 
 export default function MailDetailSenderInfo({ model, userInfo }) {
   const [globalStore] = useStore();

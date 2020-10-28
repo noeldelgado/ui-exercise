@@ -1,5 +1,5 @@
-import tagColors from '/src/utils/mockdata/tag-colors';
-import usersInfo from '/src/utils/mockdata/users';
+import tagColors from './mockdata/tag-colors';
+import usersInfo from './mockdata/users';
 
 /**
  * Convert and format a date string to local

@@ -11,8 +11,8 @@ import {
 import { LabelOutlined } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { getTagColor } from '/src/utils';
-import useStore from '/src/store';
+import { getTagColor } from '../../utils';
+import useStore from '../../store';
 
 const useStyles = makeStyles((theme) => ({
   listItemIcon: {

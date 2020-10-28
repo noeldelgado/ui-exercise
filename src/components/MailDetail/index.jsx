@@ -2,13 +2,13 @@ import React from 'react';
 import { Box, Divider, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import ChipCustom from '/src/components/ChipCustom';
 import MailDetailEmptyState from './MailDetailEmptyState';
 import MailDetailTopControls from './MailDetailTopControls';
 import MailDetailSenderInfo from './MailDetailSenderInfo';
 import MailDetailBody from './MailDetailBody';
-import { getUserInfo } from '/src/utils';
-import useStore from '/src/store';
+import ChipCustom from '../ChipCustom';
+import { getUserInfo } from '../../utils';
+import useStore from '../../store';
 
 const useStyles = makeStyles((theme) => ({
   list: {

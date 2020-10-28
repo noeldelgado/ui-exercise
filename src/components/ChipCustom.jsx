@@ -3,7 +3,7 @@ import { string } from 'prop-types';
 import { Chip } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { getTagColor } from '/src/utils';
+import { getTagColor } from '../utils';
 
 const useStyles = (props) =>
   makeStyles((theme) => ({

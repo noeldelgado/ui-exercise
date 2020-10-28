@@ -4,7 +4,7 @@ import Parser from 'html-react-parser';
 import { Box, Button, Divider, Typography } from '@material-ui/core';
 import { ForwardRounded, ReplyOutlined } from '@material-ui/icons';
 
-import Attachment from '/src/components/Attachment';
+import Attachment from '../Attachment';
 
 export default function MailDetailBody({ model }) {
   return (

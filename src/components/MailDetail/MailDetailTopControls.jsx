@@ -10,8 +10,8 @@ import {
   ReplyOutlined,
 } from '@material-ui/icons';
 
-import ToggleButtonStar from '/src/components/ToggleButtonStar';
-import useStore from '/src/store';
+import ToggleButtonStar from '../ToggleButtonStar';
+import useStore from '../../store';
 
 export default function MailDetailTopControls({ model }) {
   const [, globalActions] = useStore();

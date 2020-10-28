@@ -15,7 +15,7 @@ import {
   MaximizeRounded,
 } from '@material-ui/icons';
 
-import useStore from '/src/store';
+import useStore from '../store';
 
 export default function ComposeEmail() {
   const [globalState, globalActions] = useStore();

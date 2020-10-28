@@ -19,9 +19,9 @@ import {
   StarBorderRounded,
 } from '@material-ui/icons';
 
-import { EMAIL_CHECK_OPTIONS, NAV_FILTER_ITEMS } from '/src/utils/constants';
-import { capitalize } from '/src/utils';
-import useStore from '/src/store';
+import { EMAIL_CHECK_OPTIONS, NAV_FILTER_ITEMS } from '../../utils/constants';
+import { capitalize } from '../../utils';
+import useStore from '../../store';
 
 export default function MailListHeader({
   onCheckEmailOptionClick,
