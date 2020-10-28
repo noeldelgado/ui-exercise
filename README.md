@@ -1,6 +1,12 @@
-# New Project
+# ui-exercise
 
 > ✨ Bootstrapped with Create Snowpack App (CSA).
+
+## Running locally
+```sh
+npm install
+npm start
+```
 
 ## Available Scripts
 
